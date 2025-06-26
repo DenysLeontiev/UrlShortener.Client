@@ -20,6 +20,9 @@
                         Created: {{ url.dateCreated | date:'short' }}
                     </div>
                 </div>
+                <button class="mt-1" (click)="deleteUrl(url.id)" *ngIf="(authService.currentUser$ | async)?.id === url.userId"><i
+                        class="fa fa-trash"></i></button>
+                <button class="mt-1 ms-2" [routerLink]="['/url-list', url.id]"><i class="fa fa-info"></i></button>
             </div>
         </div>
 

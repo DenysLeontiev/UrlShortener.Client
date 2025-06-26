@@ -16,7 +16,7 @@ export class UrlList implements OnInit, OnDestroy {
 
   public urlService: UrlService = inject(UrlService);
   public authService: AuthService = inject(AuthService);
-  private toastr: ToastrService = inject(ToastrService)
+  private toastr: ToastrService = inject(ToastrService);
 
   public createShortenedUrl: CreateShortenedUrl = {
     url: ''
@@ -29,6 +29,8 @@ export class UrlList implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.urlService.clearUrls();
+
     this.destroy$.next();
     this.destroy$.complete();
   }
@@ -51,6 +53,15 @@ export class UrlList implements OnInit, OnDestroy {
       this.createShortenedUrl.url = '';
     }, (error) => {
       this.toastr.error(error.error);
+    });
+  }
+
+  public deleteUrl(id: string): void {
+    this.urlService.delete(id).pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.toastr.error("Url has been deleted");
+    }, (error) => {
+      console.log(error);
+      this.toastr.error(error);
     });
   }
 

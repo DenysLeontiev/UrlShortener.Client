@@ -1,0 +1,91 @@
+.url-details-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 188, 212, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+
+    .title {
+        text-align: center;
+        font-size: 2rem;
+        color: #00bcd4;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.2rem;
+        padding: 0.8rem 1rem;
+        background-color: #f7f9fa;
+        border-radius: 14px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #eef7f8;
+        }
+
+        label {
+            font-weight: 500;
+            color: #00bcd4;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        span,
+        a {
+            font-size: 1rem;
+            color: #333;
+            word-break: break-word;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0277bd;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: #01579b;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.btn-back {
+    margin-top: 2rem;
+    padding: 0.6rem 1.4rem;
+    background-color: #007acc;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #005fa3;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .url-details-card {
+        padding: 1.5rem;
+
+        .title {
+            font-size: 1.5rem;
+        }
+
+        .field {
+            padding: 0.6rem 0.8rem;
+        }
+    }
+}

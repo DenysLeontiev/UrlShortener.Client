@@ -1,0 +1,35 @@
+<div class="url-details-card" *ngIf="url">
+    <h2 class="title">URL Details</h2>
+
+    <div class="field">
+        <label>ID:</label>
+        <span>{{ url.id }}</span>
+    </div>
+
+    <div class="field">
+        <label>Original URL:</label>
+        <a [href]="url.originalUrl" target="_blank" rel="noopener">{{ url.originalUrl }}</a>
+    </div>
+
+    <div class="field">
+        <label>Shortened URL:</label>
+        <a [href]="url.shortenUrl" target="_blank" rel="noopener">{{ url.shortenUrl }}</a>
+    </div>
+
+    <div class="field">
+        <label>Created:</label>
+        <span>{{ url.dateCreated | date:'medium' }}</span>
+    </div>
+
+    <div class="field">
+        <label>Modified:</label>
+        <span>{{ url.dateModified | date:'medium' }}</span>
+    </div>
+
+    <div class="field">
+        <label>Created by:</label>
+        <span>{{ url.userName }}</span>
+    </div>
+
+    <button class="btn-back" routerLink="/url-list">← Back</button>
+</div>
