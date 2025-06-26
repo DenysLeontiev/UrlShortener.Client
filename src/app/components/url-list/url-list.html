@@ -1,5 +1,5 @@
-<div class="url-shortener" *ngIf="(authService.currentUser$ | async)">
-    <div class="add-url">
+<div class="url-shortener">
+    <div class="add-url" *ngIf="(authService.currentUser$ | async)">
         <input type="text" placeholder="Enter a URL..." [(ngModel)]="createShortenedUrl.url" />
         <button (click)="shortenUrl()">Shorten URL</button>
     </div>
@@ -20,8 +20,8 @@
                         Created: {{ url.dateCreated | date:'short' }}
                     </div>
                 </div>
-                <button class="mt-1" (click)="deleteUrl(url.id)" *ngIf="(authService.currentUser$ | async)?.id === url.userId"><i
-                        class="fa fa-trash"></i></button>
+                <button class="mt-1" (click)="deleteUrl(url.id)"
+                    *ngIf="(authService.currentUser$ | async)?.id === url.userId"><i class="fa fa-trash"></i></button>
                 <button class="mt-1 ms-2" [routerLink]="['/url-list', url.id]"><i class="fa fa-info"></i></button>
             </div>
         </div>

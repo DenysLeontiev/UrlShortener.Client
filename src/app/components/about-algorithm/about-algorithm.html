@@ -1,0 +1,18 @@
+<section class="about-container">
+    <h1 class="title">How URL Shortening Works</h1>
+
+    <p class="description">
+        We turn your long URLs into tiny, shareable links through a smart, unique code generation algorithm.
+    </p>
+
+    <p class="text-block">
+        Our system generates a <strong>7-character code</strong> from letters and numbers, ensuring it’s unique by
+        checking the database. Then, it combines that code with your domain to create your short URL.
+    </p>
+
+    <button *ngIf="(authService.userRoles$ | async)?.includes('Admin')" class="edit-btn" type="button" aria-label="Edit About Text">Edit</button>
+
+    <footer class="footer-note">
+        Share more, worry less — that’s the magic behind every short link.
+    </footer>
+</section>

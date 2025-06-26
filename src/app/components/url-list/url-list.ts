@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CreateShortenedUrl } from '../../_models/createShortenedUrl';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../_services/auth-service/auth-service';
+import { Pagination } from '../../_models/pagination';
 
 @Component({
   selector: 'app-url-list',
@@ -21,6 +22,8 @@ export class UrlList implements OnInit, OnDestroy {
   public createShortenedUrl: CreateShortenedUrl = {
     url: ''
   }
+
+  public pagination: Pagination | undefined;
 
   private destroy$: Subject<void> = new Subject<void>();
 
