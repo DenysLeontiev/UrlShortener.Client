@@ -1,0 +1,18 @@
+<div class="page-container">
+    <div class="register-container">
+        <form [formGroup]="loginForm">
+            <h1>Login</h1>
+
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <input type="text" formControlName="userName" placeholder="Name" name="name" ngModel required />
+            <input type="password" formControlName="password" placeholder="Password" name="password" ngModel required />
+
+            <button type="submit" (click)="login()">Sign In</button>
+        </form>
+    </div>
+</div>
