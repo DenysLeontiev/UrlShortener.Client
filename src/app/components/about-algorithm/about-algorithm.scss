@@ -73,6 +73,67 @@
     }
 }
 
+.about-editor {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 1.5rem auto;
+    padding: 1rem;
+    border: 2px solid #90caf9;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #1a237e;
+    resize: vertical;
+    box-shadow: 0 4px 14px rgba(0, 85, 255, 0.12);
+    transition: border-color 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #1976d2;
+    }
+}
+
+.editor-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+
+    .save-btn,
+    .cancel-btn {
+        padding: 0.55rem 1.6rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        user-select: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .save-btn {
+        background-color: #0d47a1;
+        color: white;
+        border: none;
+
+        &:hover {
+            background-color: #002171;
+        }
+    }
+
+    .cancel-btn {
+        background-color: #eeeeee;
+        color: #333;
+        border: none;
+
+        &:hover {
+            background-color: #cccccc;
+        }
+    }
+}
+
+
 @media (max-width: 480px) {
     .about-container {
         padding: 1.5rem 1.2rem;
