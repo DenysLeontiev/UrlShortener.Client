@@ -26,9 +26,7 @@ export class AboutPageService {
   }
 
   public editAboutPage(editAboutPage: EditAboutPage): Observable<AboutPage> {
-
     return this.http.post<AboutPage>(this.baseUrl + 'about/edit', editAboutPage).pipe(tap((page: AboutPage) => {
-
       this.aboutPageSource.next(page);
     }))
   }

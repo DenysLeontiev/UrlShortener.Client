@@ -40,19 +40,16 @@ export class UrlService {
 
   public createShortenedUrl(createShortenedUrl: CreateShortenedUrl): Observable<Url> {
     return this.http.post<Url>(this.baseUrl + 'urls/shorten', createShortenedUrl).pipe(tap(shortenedUrl => {
-      this.urls$.pipe(take(1)).subscribe((urls) => {
-        urls.unshift(shortenedUrl);
-        this.urlsSource.next(urls);
-      })
+      const updatedUrls = [shortenedUrl, ...this.urlsSource.value];
+      this.urlsSource.next(updatedUrls);
     }));
   }
 
   public delete(id: string): Observable<Object> {
     return this.http.delete(this.baseUrl + 'urls/' + id).pipe(tap(() => {
-      this.urls$.pipe(take(1)).subscribe((urls) => {
-        let filteredUrls = urls.filter(x => x.id !== id);
-        this.urlsSource.next(filteredUrls);
-      })
+      const currentUrls = this.urlsSource.value;
+      const updatedUrls = currentUrls.filter(url => url.id !== id);
+      this.urlsSource.next(updatedUrls);
     }));
   }
 

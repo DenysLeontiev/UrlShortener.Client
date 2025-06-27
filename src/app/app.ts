@@ -19,7 +19,7 @@ export class App implements OnInit {
   private authService = inject(AuthService);
 
   public setCurrentUser(): void {
-    const user: UserJwt = JSON.parse(localStorage.getItem('shorten-url-user')!);
+    const user: UserJwt = JSON.parse(localStorage.getItem(this.authService.shortenUrlUserKey)!);
     if (user) {
       this.authService.setCurrentUser(user);
     }

@@ -15,13 +15,13 @@ export class AuthService {
 
   private baseUrl: string = environment.baseUrl;
 
+  public readonly shortenUrlUserKey: string = "shorten-url-user";
+
   private currentUserSource: BehaviorSubject<UserJwt | null> = new BehaviorSubject<UserJwt | null>(null);
   public currentUser$: Observable<UserJwt | null> = this.currentUserSource.asObservable();
 
   private userRolesSource: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
   public userRoles$: Observable<string[]> = this.userRolesSource.asObservable();
-
-  constructor() { }
 
   public register(model: any): Observable<UserJwt> {
     return this.http.post<UserJwt>(this.baseUrl + 'account/register', model).pipe(tap((user: UserJwt) => {
@@ -43,12 +43,12 @@ export class AuthService {
 
   public logout(): void {
     this.router.navigateByUrl('/');
-    localStorage.removeItem('shorten-url-user');
+    localStorage.removeItem(this.shortenUrlUserKey);
     this.currentUserSource.next(null);
   }
 
   public setCurrentUser(userJwt: UserJwt): void {
-    localStorage.setItem('shorten-url-user', JSON.stringify(userJwt));
+    localStorage.setItem(this.shortenUrlUserKey, JSON.stringify(userJwt));
     this.currentUserSource.next(userJwt);
 
     this.setUserRoles(userJwt);
