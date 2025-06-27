@@ -1,4 +1,4 @@
 export class UrlParams {
     pageNumber: number = 1;
-    pageSize: number = 2;
+    pageSize: number = 10;
 }

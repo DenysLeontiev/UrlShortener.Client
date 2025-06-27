@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <nav *ngIf="pagination" class="pagination-nav">
+        <nav *ngIf="(pagination$ | async) as pagination" class="pagination-nav" [hidden]="pagination.totalItems === 0">
             <ul class="pagination justify-content-center">
                 <li class="page-item" [class.disabled]="pagination.currentPage === 1">
                     <button class="page-link" (click)="pageChanged(pagination.currentPage - 1)">Previous</button>
