@@ -68,6 +68,14 @@ export class UrlList implements OnInit, OnDestroy {
     });
   }
 
+  public deleteAll(): void {
+    this.urlService.deleteAll().pipe(takeUntil(this.destroy$)).subscribe(() => {
+      this.toastr.error("All urls have been deleted");
+    }, (error) => {
+      this.toastr.error(error.error);
+    });
+  }
+
   public copyToClipboard(url: string): void {
     navigator.clipboard.writeText(url);
     this.toastr.success("Copied to Clipboard");

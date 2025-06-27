@@ -55,6 +55,12 @@ export class UrlService {
     }));
   }
 
+  public deleteAll(): Observable<Object> {
+    return this.http.delete(this.baseUrl + 'urls/delete-all').pipe(tap(() => {
+      this.clearUrls();
+    }));
+  }
+
   public clearUrls(): void {
     this.urlsSource.next([]);
     this.urlParams.pageNumber = 1;

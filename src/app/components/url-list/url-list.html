@@ -2,6 +2,7 @@
     <div class="add-url" *ngIf="(authService.currentUser$ | async)">
         <input type="text" placeholder="Enter a URL..." [(ngModel)]="createShortenedUrl.url" />
         <button (click)="shortenUrl()">Shorten URL</button>
+        <button *ngIf="(authService.userRoles$ | async)?.includes('Admin')" (click)="deleteAll()">Delete All</button>
     </div>
 
     <ng-container *ngIf="(urlService.urls$ | async) as urls">
