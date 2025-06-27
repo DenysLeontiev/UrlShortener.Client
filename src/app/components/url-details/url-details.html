@@ -1,35 +1,39 @@
 <div class="url-details-card" *ngIf="url">
-    <h2 class="title">URL Details</h2>
+  <h2 class="title">🔗 URL Information</h2>
 
-    <div class="field">
-        <label>ID:</label>
-        <span>{{ url.id }}</span>
+  <div class="details-grid">
+    <div class="detail-box">
+      <span class="label">ID</span>
+      <span class="value">{{ url.id }}</span>
     </div>
 
-    <div class="field">
-        <label>Original URL:</label>
-        <a [href]="url.originalUrl" target="_blank" rel="noopener">{{ url.originalUrl }}</a>
+    <div class="detail-box">
+      <span class="label">Original URL</span>
+      <a class="value url-link" [href]="url.originalUrl" target="_blank" rel="noopener">{{ url.originalUrl }}</a>
     </div>
 
-    <div class="field">
-        <label>Shortened URL:</label>
-        <a [href]="url.shortenUrl" target="_blank" rel="noopener">{{ url.shortenUrl }}</a>
+    <div class="detail-box">
+      <span class="label">Shortened URL</span>
+      <a class="value url-link" [href]="url.shortenUrl" target="_blank" rel="noopener">{{ url.shortenUrl }}</a>
     </div>
 
-    <div class="field">
-        <label>Created:</label>
-        <span>{{ url.dateCreated | date:'medium' }}</span>
+    <div class="detail-box">
+      <span class="label">Created</span>
+      <span class="value">{{ url.dateCreated | date: 'medium' }}</span>
     </div>
 
-    <div class="field">
-        <label>Modified:</label>
-        <span>{{ url.dateModified | date:'medium' }}</span>
+    <div class="detail-box">
+      <span class="label">Modified</span>
+      <span class="value">{{ url.dateModified | date: 'medium' }}</span>
     </div>
 
-    <div class="field">
-        <label>Created by:</label>
-        <span>{{ url.userName }}</span>
+    <div class="detail-box">
+      <span class="label">Created By</span>
+      <span class="value">{{ url.userName }}</span>
     </div>
+  </div>
 
-    <button class="btn-back" routerLink="/url-list">← Back</button>
+  <div class="action">
+    <button class="btn-back" routerLink="/url-list">← Back to list</button>
+  </div>
 </div>
