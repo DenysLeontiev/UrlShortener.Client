@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment.development';
 import { UrlParams } from '../../_models/urlParams';
 import { BehaviorSubject, Observable, take, tap } from 'rxjs';
 import { Url } from '../../_models/url';
-import { PaginatedResult } from '../../_models/pagination';
+import { PaginatedResult, Pagination } from '../../_models/pagination';
 import { getPaginatedResult, getPaginationHeaders } from '../../_helpers/paginationHelpers';
 import { CreateShortenedUrl } from '../../_models/createShortenedUrl';
 
@@ -22,14 +22,15 @@ export class UrlService {
   private urlsSource: BehaviorSubject<Url[]> = new BehaviorSubject<Url[]>([]);
   public urls$: Observable<Url[]> = this.urlsSource.asObservable();
 
+  private paginationSource = new BehaviorSubject<Pagination | null>(null);
+  public pagination$ = this.paginationSource.asObservable();
+
   public getUrls(): Observable<PaginatedResult<Url[]>> {
     let params = getPaginationHeaders(this.urlParams);
 
     return getPaginatedResult<Url[]>(this.baseUrl + 'urls', params, this.http).pipe(tap(paginatedRes => {
-      this.urls$.pipe(take(1)).subscribe((urls) => {
-        let extendedUrls = urls.concat(paginatedRes.result!);
-        this.urlsSource.next(extendedUrls);
-      });
+      this.urlsSource.next(paginatedRes.result!);
+      this.paginationSource.next(paginatedRes.pagination || null);
     }))
   }
 
@@ -58,6 +59,7 @@ export class UrlService {
   public deleteAll(): Observable<Object> {
     return this.http.delete(this.baseUrl + 'urls/delete-all').pipe(tap(() => {
       this.clearUrls();
+      this.paginationSource.next(null);
     }));
   }
 

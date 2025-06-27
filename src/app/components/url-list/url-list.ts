@@ -29,6 +29,15 @@ export class UrlList implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadUrls();
+
+    this.urlService.pagination$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((pagination) => this.pagination = pagination || undefined);
+  }
+
+  public pageChanged(page: number): void {
+    this.urlService.urlParams.pageNumber = page;
+    this.loadUrls();
   }
 
   ngOnDestroy(): void {

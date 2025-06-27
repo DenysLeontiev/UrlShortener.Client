@@ -191,3 +191,26 @@ button {
 .no-urls-indicator small {
     font-size: 0.9rem;
 }
+
+.pagination-nav {
+    margin-top: 20px;
+
+    .pagination {
+        .page-item {
+            .page-link {
+                cursor: pointer;
+            }
+
+            &.active .page-link {
+                background-color: #007bff;
+                border-color: #007bff;
+                color: white;
+            }
+
+            &.disabled .page-link {
+                pointer-events: none;
+                opacity: 0.6;
+            }
+        }
+    }
+}
